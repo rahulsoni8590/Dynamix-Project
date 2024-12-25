@@ -15,15 +15,20 @@ var data = [];
         if(res.ok){
             const result = await res.json()
             data = [result]
+        }else {
+            throw new Error('Failed to fetch data');
         }
     }catch(err){
         console.log(err)
     } 
 })()
 
-server.get("/", (req,res)=>{
-    const result = checkValuation(data)
-    res.render("home", {result})
+server.get("/", async (req,res)=>{
+    if (!data || data.length === 0) {
+      return res.status(500).send('Error fetching data');
+    }
+    const result = checkValuation(data);
+    res.render("home", { result });
 })
 
 server.listen(port, ()=>{

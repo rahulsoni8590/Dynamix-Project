@@ -1,4 +1,8 @@
-export default class Checklist{
+
+// class contains all the checklist functions which return true/false based on the condition
+// can add as many checks inside this class and utililze them in the checkEvaluation function in the utility module
+
+export default class Rules{
 
     isValuationFeePaid(isValuationFeePaid){
         return isValuationFeePaid
